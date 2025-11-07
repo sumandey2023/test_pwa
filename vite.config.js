@@ -7,16 +7,31 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      registerType: "autoUpdate",
+      injectRegister: "auto",
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
+      },
       manifest: {
-        name: "Test PWA",
-        short_name: "TestPWA",
+        name: "PWA Test",
+        short_name: "PWA",
         description: "A simple Progressive Web App using Vite and React",
-        theme_color: "#ffffff",
+        theme_color: "#000000",
+        background_color: "#ffffff",
+        display: "standalone",
+        start_url: "/",
         icons: [
           {
-            src: "icons/test_icon-48x48.png",
-            sizes: "48x48",
+            src: "/icons/icon-192.png",
+            sizes: "192x192",
             type: "image/png",
+            purpose: "any maskable",
+          },
+          {
+            src: "/icons/icon-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable",
           },
           {
             src: "icons/test_icon-72x72.png",
